@@ -27,6 +27,7 @@ namespace PvcPlugins
         public static bool IsGzipStream(PvcStream stream)
         {
             var bytes = new byte[3];
+            stream.ResetStreamPosition();
             stream.Read(bytes, 0, 3);
             stream.ResetStreamPosition();
             return bytes.SequenceEqual(gzipSignature);
